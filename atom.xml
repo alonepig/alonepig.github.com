@@ -6,7 +6,7 @@
   <link href="http://shjlone.github.io/atom.xml" rel="self"/>
   
   <link href="http://shjlone.github.io/"/>
-  <updated>2021-05-29T13:26:29.879Z</updated>
+  <updated>2021-06-12T02:15:06.360Z</updated>
   <id>http://shjlone.github.io/</id>
   
   <author>
@@ -17,34 +17,149 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>火车票黄牛</title>
-    <link href="http://shjlone.github.io/wiki/%E9%9A%8F%E7%AC%94/%E7%81%AB%E8%BD%A6%E7%A5%A8%E9%BB%84%E7%89%9B/"/>
-    <id>http://shjlone.github.io/wiki/%E9%9A%8F%E7%AC%94/%E7%81%AB%E8%BD%A6%E7%A5%A8%E9%BB%84%E7%89%9B/</id>
-    <published>2021-05-29T13:26:29.879Z</published>
-    <updated>2021-05-29T13:26:29.879Z</updated>
+    <title>多线程</title>
+    <link href="http://shjlone.github.io/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    <id>http://shjlone.github.io/wiki/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%BA%BF%E7%A8%8B/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</id>
+    <published>2021-06-12T02:15:06.360Z</published>
+    <updated>2021-06-12T02:15:06.360Z</updated>
     
-    <content type="html"><![CDATA[<p>今天“长见识”了。</p><p>开始以为回广州的高铁票应该很容易买到，所以，并没有提前买票。然而，在家用某行火车票刷票到7点也没买到票。明天可还要上班呢。想着要不去人工售票处碰碰运气。然后来到了高铁站。先去了人工售票窗口，售票的这个小姐姐用非常冷淡的表情回答说没有，然后我就再次问了一次，请问今晚往广州方向的车的票有没有，只要能上车的都行？结果是她再次肯定的说了一句没有！哎，既然这样说了…</p><p>然后，我想去售票机上碰碰运气。当我到了一台售票机前，打算查询的时候，旁边来了一位小哥，跟我说：兄Dai，需要票吗？一个小时以内的都可以搞定。我当时就有点懵逼了，黄牛难道可以变出票来？想着还是要回去的，于是说：我需要的。他说：你跟我来这边吧，这边的机器快一些。然后我们来到了旁边的一台机器旁，只见他迅速的在售票机前点击。操作也就是查询是否有余票，然后一下子就出现了，请刷身份证的提示。然后跟我说：快把身份证放上来。我一下子看傻了，然后迅速冷静下来，问他需要给他多少钱。结果，等了十几秒吧，票就没了。他表现的有点懊恼。想想还是要回去的，于是跟他谈价钱，然后又看他操作了一遍，太神奇了。不到一分钟，他又刷出来一张，然后我拿出身份证支付了。</p><p>事后想想，难道这是售票机的漏洞吗？难道售票机上的查询接口跟人工售票厅里的不一样？黄牛的这个钱也太好赚了吧。</p><p>再想想，可能是后台针对售票机在开车前一段时间特意留了一些票吧！这样能让真正赶火车的人能买到票。真是一片良苦用心啊！可惜哪里有利益哪里就有黄牛啊！</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="线程的概念"><a href="#线程的概念" class="headerlink" title="线程的概念"></a>线程的概念</h2><p>引入进程的目的，是为了使多道程序并发执行，以提高资源利用率和系统吞吐量；而引入线程，则是为了减小程序在并发执行时所付出的时空开销，<br>提高操作系统的并发性能。</p><p>线程最直接的理解就是“轻量级进程”，它是一个基本的CPU执行单元，也是程序执行流的最小单元，由线程ID、程序计数器、寄存器集合和堆栈组成。<br>线程是进程中的一个实体，是被系统独立调度和分派的基本单位，线程自己不拥有系统资源，只拥有一点在运行中必不可少的资源，但它可与同属一个进程的其<br>他线程共享进程所拥有的全部资源。一个线程可以创建和撤销另一个线程，同一进程中的多个线程之间可以并发执行。由于线程之间的相互制约，致使线程在运<br>行中呈现出间断性。</p><h2 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h2><p><img src="./thread_1.png"></p><ul><li>新建状态:</li></ul><p>线程对象已经创建，还没有在其上调用start()方法。</p><ul><li>可运行状态:</li></ul><p>当线程有资格运行，但调度程序还没有把它选定为运行线程时线程所处的状态。当start()方法调用时，线程首先进入可运行状态。在线程运行之后或者从阻塞、等待或睡眠状态回来后，也返回到可运行状态。</p><ul><li>运行状态:</li></ul><p>就绪状态的线程获取了CPU，执行程序代码。</p><ul><li>阻塞状态:</li></ul><p>阻塞状态是线程因为某种原因放弃CPU使用权，暂时停止运行。直到线程进入可运行状态，才有机会转到运行状态。</p><p>阻塞的情况分三种：</p><pre><code>等待阻塞:运行的线程执行wait()方法，该线程会释放占用的所有资源，JVM会把该线程放入“等待池”中。进入这个状态后，是不能自动唤醒的，必须依靠其他线程调用notify()或notifyAll()方法才能被唤醒. (注意:当调用wait()后，线程会释放掉它所占有的&#39;锁&#39;，所以线程只有在持有&#39;锁&#39;才能进入可运行状态.)同步阻塞:运行的线程在获取对象的同步锁时，若该同步锁被别的线程占用，则JVM会把该线程放入“锁池”中。其他阻塞:运行的线程执行sleep()或join()方法，或者发出了I/O请求时，JVM会把该线程置为阻塞状态。当sleep()状态超时、join()等待线程终止或者超时、或者I/O处理完毕时，线程重新转入就绪状态。</code></pre><ul><li>死亡状态:</li></ul><p>线程执行完了或者因异常退出了run()时就认为它死去。这个线程对象也许是活的，但是，它已经不是一个单独执行的线程。线程一旦死亡，就不能复生。如果在一个死去的线程上调用start()方法，会抛出java.lang.IllegalThreadStateException异常。</p><h2 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h2><h2 id="线程间通讯"><a href="#线程间通讯" class="headerlink" title="线程间通讯"></a>线程间通讯</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;今天“长见识”了。&lt;/p&gt;
-&lt;p&gt;开始以为回广州的高铁票应该很容易买到，所以，并没有提前买票。然而，在家用某行火车票刷票到7点也没买到票。明天可还要上班呢。想着要不去人工售票处碰碰运气。然后来到了高铁站。先去了人工售票窗口，售票的这个小姐姐用非常冷淡的表情回答说没有，然后我</summary>
+    <summary type="html">&lt;h2 id=&quot;线程的概念&quot;&gt;&lt;a href=&quot;#线程的概念&quot; class=&quot;headerlink&quot; title=&quot;线程的概念&quot;&gt;&lt;/a&gt;线程的概念&lt;/h2&gt;&lt;p&gt;引入进程的目的，是为了使多道程序并发执行，以提高资源利用率和系统吞吐量；而引入线程，则是为了减小程序在并发执行时所付</summary>
       
     
     
     
-    <category term="随笔" scheme="http://shjlone.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="操作系统" scheme="http://shjlone.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
+    <category term="线程" scheme="http://shjlone.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+    <category term="技术" scheme="http://shjlone.github.io/tags/%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式</title>
+    <link href="http://shjlone.github.io/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    <id>http://shjlone.github.io/wiki/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</id>
+    <published>2021-06-12T02:15:06.360Z</published>
+    <updated>2021-06-12T02:15:06.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>单例模式应该是最常见的设计模式了</p><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>定义：单例对象的类必须保证只有一个实例存在。</p><p>为了实现一个健壮的单例，我们应该思考需要做哪些事情？</p><ul><li>不能随意的让用户new出对象，所以构造函数应该是私有的</li><li>既然不能直接new，就应该有一个方法专门用来返回实例对象</li><li>不能clone</li><li>不能被反序列化</li><li>多线程使用时，如何保证线程安装</li></ul><h2 id="Java的实现方式"><a href="#Java的实现方式" class="headerlink" title="Java的实现方式"></a>Java的实现方式</h2><p>根据上面的思考，我们可以一步步的来实现单例模式。</p><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance; </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123; </span><br><span class="line">            instance = <span class="keyword">new</span> Singleton(); </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>使用的时候才进行初始化，但此种写法是线程不安全的。那么是否把getInstance方法加一个锁就可以了呢？</p><h3 id="线程安全的懒汉式"><a href="#线程安全的懒汉式" class="headerlink" title="线程安全的懒汉式"></a>线程安全的懒汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance; </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123; </span><br><span class="line">            instance = <span class="keyword">new</span> Singleton(); </span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> instance; </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>嗯，这种写法确实安全了，可是效率低，因为有更好的方式啊</p><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton(); </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> instance; &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>; </span><br><span class="line">    <span class="keyword">static</span> &#123; instance = <span class="keyword">new</span> Singleton(); &#125; </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> instance; &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>为什么叫饿汉呢？因为在类加载的时候对象就被创建了啊！这也是该方式不太好的地方，需要的实例应该要在需要用到的时候才初始化呢!<br>所以应该想想怎样才能延迟加载呢？</p><h3 id="静态内部类实现方式"><a href="#静态内部类实现方式" class="headerlink" title="静态内部类实现方式"></a>静态内部类实现方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123; </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123; </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton(); </span><br><span class="line">    &#125; </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span></span>&#123;&#125; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE; </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>SingletonHolder类没有被主动使用，只有显示通过调用getInstance方法时，才会显示装载SingletonHolder类，从而实例化instance。完美！！</p><h3 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方式一</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Singleton</span> </span>&#123; </span><br><span class="line">    INSTANCE; </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whoAmI</span><span class="params">()</span> </span>&#123; System.out.println(<span class="keyword">this</span>.toString()); &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//方式二</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whoAmI</span><span class="params">()</span> </span>&#123; System.out.println(<span class="keyword">this</span>.toString()); &#125;   </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">enum</span> <span class="title">SingletonEnum</span> </span>&#123;</span><br><span class="line">        SINGLETON;</span><br><span class="line">        <span class="keyword">private</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">SingletonEnum</span><span class="params">()</span></span>&#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>Java虚拟机会保证枚举类型不能被反射并且构造函数只被执行一次</strong></p><h3 id="双重检查锁模式"><a href="#双重检查锁模式" class="headerlink" title="双重检查锁模式"></a>双重检查锁模式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span>(instance == <span class="keyword">null</span>) </span><br><span class="line">                    instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>为什么要这样写呢？</strong></p><p>其实这是懒汉式的升级版。懒汉式中所有线程在访问getInstance都会锁住，但实际情况中，很多时候只是读操作，<br>我们没有必要让每个线程都锁住才调用它。</p><p><strong>为什么要加volatile呢？</strong></p><p>因为JVM指令可重排，具体可以看看<a href="">volatile</a>这篇文档</p><h2 id="Kotlin的实现方式"><a href="#Kotlin的实现方式" class="headerlink" title="Kotlin的实现方式"></a>Kotlin的实现方式</h2><p>由于kotlin的语言特性，有些写法还是有别于Java的。</p><h3 id="饿汉式-1"><a href="#饿汉式-1" class="headerlink" title="饿汉式"></a>饿汉式</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">object</span> Singleton &#123;&#125;</span><br></pre></td></tr></table></figure><p>对！就是这么简单。以上代码转换成Java后，就是在静态代码块中初始化了Singleton。</p><h3 id="懒汉式-1"><a href="#懒汉式-1" class="headerlink" title="懒汉式"></a>懒汉式</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">var</span> instance: Singleton? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">get</span>() &#123;</span><br><span class="line">                <span class="keyword">if</span> (field == <span class="literal">null</span>) &#123;</span><br><span class="line">                    field = Singleton()</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> field</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">()</span></span>: Singleton &#123;</span><br><span class="line">        <span class="comment">//这里不用getInstance作为为方法名，是因为在伴生对象声明时，内部已有getInstance方法，所以只能取其他名字</span></span><br><span class="line">         <span class="keyword">return</span> instance!!</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h3 id="线程安全的懒汉式-1"><a href="#线程安全的懒汉式-1" class="headerlink" title="线程安全的懒汉式"></a>线程安全的懒汉式</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">var</span> instance: Singleton? = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">get</span>() &#123;</span><br><span class="line">                <span class="keyword">if</span> (field == <span class="literal">null</span>) field = Singleton()</span><br><span class="line">                <span class="keyword">return</span> field</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Synchronized</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">instance</span><span class="params">()</span></span>: Singleton &#123;</span><br><span class="line">            <span class="keyword">return</span> instance!!</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="双重锁校验"><a href="#双重锁校验" class="headerlink" title="双重锁校验"></a>双重锁校验</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">        <span class="keyword">val</span> instance <span class="keyword">by</span> lazy &#123; Singleton() &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="静态内部类的实现"><a href="#静态内部类的实现" class="headerlink" title="静态内部类的实现"></a>静态内部类的实现</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">private</span> <span class="keyword">constructor</span></span>() &#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@JvmStatic</span> <span class="comment">//方便Java中使用</span></span><br><span class="line">        <span class="function"><span class="keyword">fun</span> <span class="title">getInstance</span><span class="params">()</span></span> &#123;</span><br><span class="line">            <span class="keyword">return</span> Holder.instance</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">object</span> Holder &#123;</span><br><span class="line">        <span class="keyword">val</span> instance = Singleton()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id=""><a href="#" class="headerlink" title=""></a></h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    INSTANCE;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="如何处理反序列化"><a href="#如何处理反序列化" class="headerlink" title="如何处理反序列化"></a>如何处理反序列化</h2><p>最开始的分析指出，为了不让别人直接new，构造函数需要设置成私有的。除此之外，还可能被反序列化。那么怎么解决这个问题呢？</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> Object <span class="title">readResolve</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这样就行了？可以参考<a href="https://www.jianshu.com/p/ea1d9bc40341">https://www.jianshu.com/p/ea1d9bc40341</a>这篇文章了解原理。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在实际项目开发过程中，使用的最多还是双重锁校验和内部类的实现方式。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F">https://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F</a></li><li><a href="https://www.jianshu.com/p/ea1d9bc40341">https://www.jianshu.com/p/ea1d9bc40341</a></li><li><a href="https://blog.csdn.net/c10WTiybQ1Ye3/article/details/108806203">https://blog.csdn.net/c10WTiybQ1Ye3/article/details/108806203</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;单例模式应该是最常见的设计模式了&lt;/p&gt;
+&lt;h2 id=&quot;定义&quot;&gt;&lt;a href=&quot;#定义&quot; class=&quot;headerlink&quot; title=&quot;定义&quot;&gt;&lt;/a&gt;定义&lt;/h2&gt;&lt;p&gt;定义：单例对象的类必须保证只有一个实例存在。&lt;/p&gt;
+&lt;p&gt;为了实现一个健壮的单例，我们应该</summary>
+      
+    
+    
+    
+    <category term="设计模式" scheme="http://shjlone.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    <category term="创建型模式" scheme="http://shjlone.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+    <category term="设计模式" scheme="http://shjlone.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Binder</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Binder/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/Binder/</id>
+    <published>2021-06-12T02:15:06.344Z</published>
+    <updated>2021-06-12T02:15:06.344Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Android中IPC的不同方式比较"><a href="#Android中IPC的不同方式比较" class="headerlink" title="Android中IPC的不同方式比较"></a>Android中IPC的不同方式比较</h2><table><thead><tr><th>名称</th><th>优点</th><th>缺点</th><th>适用场景</th></tr></thead><tbody><tr><td>Bundle</td><td>简单易用</td><td>只能传输Bundle支持的数据类型</td><td>四大组件间的进程间通信</td></tr><tr><td>文件共享</td><td>简单易用</td><td>不适合高并发场景，并且无法做到进程间的即时通信</td><td>无并发访问场景</td></tr><tr><td>AIDL</td><td>功能强大，支持一对多并发通信，支持实时通信</td><td>无</td><td>一对多通信且有RPC需求</td></tr><tr><td>Messager</td><td>功能一般，支持一对多并发通信，支持实时通信</td><td>不能很好处理高并发场景，不支持RPC</td><td>低并发的一对多通信，无RPC需求</td></tr><tr><td>ContentProvider</td><td>在数据源访问方面功能强大</td><td></td><td></td></tr><tr><td>Socket</td><td>功能强大</td><td></td><td></td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Android中IPC的不同方式比较&quot;&gt;&lt;a href=&quot;#Android中IPC的不同方式比较&quot; class=&quot;headerlink&quot; title=&quot;Android中IPC的不同方式比较&quot;&gt;&lt;/a&gt;Android中IPC的不同方式比较&lt;/h2&gt;&lt;table&gt;
+&lt;</summary>
+      
+    
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="进阶知识" scheme="http://shjlone.github.io/categories/Android/%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ThreadPoolExecutor</title>
+    <link href="http://shjlone.github.io/wiki/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/ThreadPoolExecutor/"/>
+    <id>http://shjlone.github.io/wiki/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/ThreadPoolExecutor/</id>
+    <published>2021-06-12T02:15:06.344Z</published>
+    <updated>2021-06-12T02:15:06.344Z</updated>
+    
+    
+    
+    
+    <category term="Java" scheme="http://shjlone.github.io/categories/Java/"/>
+    
+    <category term="并发编程" scheme="http://shjlone.github.io/categories/Java/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="Java" scheme="http://shjlone.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RxJava</title>
+    <link href="http://shjlone.github.io/wiki/Java/%E5%BC%80%E6%BA%90%E5%BA%93/RxJava/"/>
+    <id>http://shjlone.github.io/wiki/Java/%E5%BC%80%E6%BA%90%E5%BA%93/RxJava/</id>
+    <published>2021-06-12T02:15:06.344Z</published>
+    <updated>2021-06-12T02:15:06.344Z</updated>
+    
+    
+    
+    
+    <category term="Java" scheme="http://shjlone.github.io/categories/Java/"/>
+    
+    <category term="开源库" scheme="http://shjlone.github.io/categories/Java/%E5%BC%80%E6%BA%90%E5%BA%93/"/>
+    
+    
+    <category term="Java" scheme="http://shjlone.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中的HashMap</title>
+    <link href="http://shjlone.github.io/wiki/Java/%E9%9B%86%E5%90%88/HashMap/"/>
+    <id>http://shjlone.github.io/wiki/Java/%E9%9B%86%E5%90%88/HashMap/</id>
+    <published>2021-06-12T02:15:06.344Z</published>
+    <updated>2021-06-12T02:15:06.344Z</updated>
+    
+    
+    
+    
+    <category term="Java" scheme="http://shjlone.github.io/categories/Java/"/>
+    
+    <category term="集合" scheme="http://shjlone.github.io/categories/Java/%E9%9B%86%E5%90%88/"/>
+    
+    
+    <category term="Java" scheme="http://shjlone.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>对于服务端开发的理解</title>
-    <link href="http://shjlone.github.io/wiki/%E9%9A%8F%E7%AC%94/%E5%AF%B9%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://shjlone.github.io/wiki/%E9%9A%8F%E7%AC%94/%E5%AF%B9%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E7%90%86%E8%A7%A3/</id>
-    <published>2021-05-29T13:26:29.877Z</published>
-    <updated>2021-05-29T13:26:29.878Z</updated>
+    <link href="http://shjlone.github.io/wiki/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E5%AF%B9%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://shjlone.github.io/wiki/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E5%AF%B9%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91%E7%9A%84%E7%90%86%E8%A7%A3/</id>
+    <published>2021-06-12T02:15:06.344Z</published>
+    <updated>2021-06-12T02:15:06.344Z</updated>
     
     <content type="html"><![CDATA[<p>最近一段时间，开始了解并完成了一些后端需求。大致的过程如下：</p><ul><li>熟悉PHP，看了《PHP核心技术与最佳实践》、《PHP内核剖析》、《深入理解PHP内核》；</li><li>熟悉MySQL，看了《MySQL必知必会》，接下来会看《高性能MySQL》；</li><li>熟悉Redis，看了《Redis实战》；</li><li>阅读Symfony官网文档，了解其基本原理；</li><li>由于本地使用docker开发环境，所以对docker相关知识点也进行了一轮复习；</li></ul><p>整体来看，想使用PHP相关技术栈进行后端开发，经过上面的学习后，写写业务代码，一点问题都没有。公司使用PHP这一套技术栈，也是基于人力成本、开发效率各方面<br>因素综合考虑而定的。在现有体量下也确实是比较好的选择。因为自己本身有其他语言的底子在，学习的过程中还是蛮顺利的。现在回过头看看，后端的整体架构设计也是<br>根据体量的大小一步步进化来的。</p><p>当一个（小）项目刚开始时，使用Nginx+Symfony+MySQL，当业务量有所增长，这个时候需要加上缓存Redis；当业务继续增长，这个时候需要多台机器部署了，需要<br>使用负载均衡，Nginx进行反向代理，将流量分发到不同的机器；当业务继续增长，这个时候需要考虑部署多个数据库，进行主从同步；当业务继续增长，这个时候Redis也要<br>考虑使用集群。随着业务继续增长，数据库表的设计，如何分表。如何分库，业务代码如何写效率高，等等问题都要进行考虑了。当业务还在继续增长，可能有些事情用PHP来干<br>已经不是最优解了！</p><p>除了上面所说的一些技术选择外，为了保证服务器的稳定，还有很多事情要做的，比如要对服务器相关数据进行监控，比如请求数、慢请求数、服务器流量消耗情况等；要有<br>一套完善的日志系统；对数据库的监控；容灾机制等等。</p><p>这些知识的获取途径无外乎两种，一是业务增长喜人，给了你机会把这些坑都踩一遍；二是在大公司，现成的解决方案供你学习。所以，刚毕业的小菜鸟们，还是建议能去<br>大公司就尽量去大公司，做大做强的小公司太少了，不一定能被你撞上。</p><p><strong>服务端需要用到的技术或软件：</strong></p><ul><li>开发框架：Symfony、ThinkPHP等</li><li>消息队列：RabbitMQ等  </li><li>服务器：Nginx、Apache等</li><li>缓存：Redis、MemCached等</li><li>数据存储：MySQL、PostgreSQL等</li><li>代码部署：Walle等</li><li>数据监控：Zabbix等</li><li>日志分析系统：elk等</li></ul>]]></content>
     
@@ -65,482 +180,319 @@
   </entry>
   
   <entry>
-    <title>《大明王朝1566》经典语录</title>
-    <link href="http://shjlone.github.io/wiki/%E9%9A%8F%E7%AC%94/%E3%80%8A%E5%A4%A7%E6%98%8E%E7%8E%8B%E6%9C%9D1566%E3%80%8B%E7%BB%8F%E5%85%B8%E8%AF%AD%E5%BD%95/"/>
-    <id>http://shjlone.github.io/wiki/%E9%9A%8F%E7%AC%94/%E3%80%8A%E5%A4%A7%E6%98%8E%E7%8E%8B%E6%9C%9D1566%E3%80%8B%E7%BB%8F%E5%85%B8%E8%AF%AD%E5%BD%95/</id>
-    <published>2021-05-29T13:26:29.876Z</published>
-    <updated>2021-05-29T13:26:29.876Z</updated>
+    <title>Glide</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%BC%80%E6%BA%90%E5%BA%93/Glide/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%BC%80%E6%BA%90%E5%BA%93/Glide/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T03:04:29.349Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>朝野都知道，我是严阁老提携的人。千秋万代以后，史书上我胡宗宪还会是严阁老的人。可你谭纶，还有朝里那些清流为什么还会看重我？就是我胡某在大事上从来上不误国，下不误民。</li><li>孔子说的“知不可为而为之”是什么本意！孔子是告诉世人，做事时不问可不可能，但问应不应该！</li><li>你中有我，我中有你，天下事坏就坏在这里。</li><li>事未经历不知难。</li><li>官场之中无朋友。</li><li>凡事都当作两面想。</li><li>你是个刚正的人，敢说话，敢抗上。可真要抗上，你这个七品能抗得过谁？在浙江你能做些事情撼动朝廷，那是因为你背后有人要撼动朝廷。到了江西分宜，凭你一个人又能震动谁？皇上要用的人谁也推不倒，皇上不用的人谁也保不了。</li><li>两句话你要记住，一句是文官们说的‘做官要三思’，什么叫三思，三思就是思危、思退、思变。知道了危险就能躲开危险，这就叫思危；躲到人家都不注意到你的地方，这就叫思退；退了下来就有了机会，再慢慢看、慢慢想，自己以前哪儿错了，往后该怎么做，这就叫思变。我再教你武官们说的那一句‘置之死地而后生’，看我大明朝的气数，这皇位迟早有一天是裕王的，到了那一天你才真是个死呢。 </li><li>文官的衣服上绣的是禽，武官的衣服上绣的是兽。披上了这身皮，我们哪一个不是衣冠禽兽。 </li><li>任何人答应你的事都不算数，只有自己能做主的才算数。 </li><li>这个世上，真靠得住的就两种人，一种是笨人，一种是直人。笨人没有心眼，直人不使心眼。 </li><li>世间万事万物都只有一个理，各人站的位置不同，看法不同而已。</li><li>历来造反的都是种田的人，没听说商人能闹翻了天。</li><li>裕王: 大明朝谁是贤臣? 嘉靖: 没有谁是真正的贤臣,贤时用之,不贤黜之。</li></ul>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>此篇文章只是用于记录使用Glide时要注意的点和一些使用技巧，如需查看基本使用，<br>请查阅<a href="http://bumptech.github.io/glide/">官方文档</a>。也可以看看<a href="../Glide%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/">Glide原理分析</a>。</p></blockquote><h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><h3 id="缓存等级"><a href="#缓存等级" class="headerlink" title="缓存等级"></a><strong>缓存等级</strong></h3><ul><li>活动缓存：</li><li>内存缓存：</li><li>磁盘缓存：InternalCacheDiskCacheFactory（默认）</li></ul><h3 id="资源缓存方式"><a href="#资源缓存方式" class="headerlink" title="资源缓存方式"></a><strong>资源缓存方式</strong></h3><ul><li>DiskCacheStrategy.NONE 不缓存文件</li><li>DiskCacheStrategy.SOURCE 只缓存原图</li><li>DiskCacheStrategy.RESULT 只缓存最终加载的图（默认）</li><li>DiskCacheStrategy.ALL 同时缓存原图和结果图</li></ul><h3 id="缓存键"><a href="#缓存键" class="headerlink" title="缓存键"></a><strong>缓存键</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//缓存的键包括图片的宽、高、signature等参数</span></span><br><span class="line">EngineKey key = keyFactory.buildKey(model, signature, width, height, transformations,</span><br><span class="line">resourceClass, transcodeClass, options);</span><br></pre></td></tr></table></figure><p>默认策略配置</p><h2 id="重要知识点"><a href="#重要知识点" class="headerlink" title="重要知识点"></a>重要知识点</h2><ul><li>通过attach一个Fragment来监听Context的生命周期，合理的管理图片的加载和释放。</li><li>Glide默认采用的是RGB-565，相比ARGB-8888内存占用会减小一半。</li><li>会根据ImageView的尺寸来缓存图片，</li></ul><h2 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h2><h3 id="整合OkHttp3"><a href="#整合OkHttp3" class="headerlink" title="整合OkHttp3"></a>整合OkHttp3</h3><p>为了提升请求效率，使用更高效的OkHttp3来进行资源的下载。接入方式很简单，直接在gradle中引入</p><blockquote><p>compile “com.github.bumptech.glide:okhttp3-integration:4.11.0”</p></blockquote><p>它会自动添加以下配置</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GlideModule</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">OkHttpLibraryGlideModule</span> <span class="keyword">extends</span> <span class="title">LibraryGlideModule</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerComponents</span><span class="params">(<span class="meta">@NonNull</span> Context context, <span class="meta">@NonNull</span> Glide glide,</span></span></span><br><span class="line"><span class="params"><span class="function">      <span class="meta">@NonNull</span> Registry registry)</span> </span>&#123;</span><br><span class="line">    registry.replace(GlideUrl.class, InputStream.class, <span class="keyword">new</span> OkHttpUrlLoader.Factory());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://github.com/bumptech/glide">https://github.com/bumptech/glide</a></li><li><a href="http://bumptech.github.io/glide/">官方文档</a></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;朝野都知道，我是严阁老提携的人。千秋万代以后，史书上我胡宗宪还会是严阁老的人。可你谭纶，还有朝里那些清流为什么还会看重我？就是我胡某在大事上从来上不误国，下不误民。&lt;/li&gt;
-&lt;li&gt;孔子说的“知不可为而为之”是什么本意！孔子是告诉世人，做事时不问可不可能，但问</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;此篇文章只是用于记录使用Glide时要注意的点和一些使用技巧，如需查看基本使用，&lt;br&gt;请查阅&lt;a href=&quot;http://bumptech.github.io/glide/&quot;&gt;官方文档&lt;/a&gt;。也可以看看&lt;a href=&quot;../Glide%E5</summary>
       
     
     
     
-    <category term="随笔" scheme="http://shjlone.github.io/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
     
+    <category term="开源库" scheme="http://shjlone.github.io/categories/Android/%E5%BC%80%E6%BA%90%E5%BA%93/"/>
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《计算机是怎么跑起来的》读书笔记</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E6%80%8E%E6%A0%B7%E8%B7%91%E8%B5%B7%E6%9D%A5%E7%9A%84%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
-    <published>2021-05-29T13:26:29.874Z</published>
-    <updated>2021-05-29T13:26:29.875Z</updated>
+    <title>Glide原理分析</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%BC%80%E6%BA%90%E5%BA%93/Glide%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%BC%80%E6%BA%90%E5%BA%93/Glide%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T03:05:40.441Z</updated>
     
-    <content type="html"><![CDATA[<p>计算机三个根本性基础：</p><ol><li>计算机是执行输入、运算、输出的机器；</li><li>程序是指令和数据的集合；</li><li>计算机的处理方式有时与人们的思维习惯不同。</li></ol><p>计算机的硬件由大量集成电路组成。每块集成电路上都带有许多引脚。这些引脚有些用于输入，有些用于输出。</p><p>时钟发生器</p><p>操作数：操作数笔试是已存储在CPU寄存器中的数字。<br>操作码</p><p>机器语言是唯一一种cpu能直接理解的编程语言。</p><p>CPU内部存储数据的地方也具备对数据进行计算的能力。有些寄存器中存储着接下来要执行的指令的地址。程序就是依靠着不断变花的寄存器的值运行起来的。</p><p>cpu信息<br>cpu的种类：不同的CPU对于二进制的理解是不一样的。<br>时钟信号的频率：时钟发生器发送给cpu的电信号的频率。表示时钟信号频率的单位是MHz（兆赫兹=100万回/秒）。时钟信号是在0和1之间反复变换的电信号。通常把发出一次滴答的时间称作一个时钟周期。</p><p>内存信息<br>地址空间<br>每个地址中可以存储多少比特的信息</p><p>I/O信息<br>I/O的种类<br>地址空间<br>连接着何种周边设备</p><p>最低限度所需的流程图符号</p><p>网卡地址前半部分表示生产商，后半部分表示编号。</p><p>子网掩码的作用是标识出在32比特的IP地址中，从哪一位到哪一位是网络地址，从哪一位到哪一位是主机地址。<br>255.255.255.240用二进制表示：<br>11111111.11111111.11111111.11110000<br>值为1的那些位对应着IP地址中的网络地址，后面为0的那些则对应着主机地址。</p><p>DHCP：Dynamic Host Configuration Protocol 动态主机设置协议</p><p>tracert</p><p>ARP：Address Resolution Protocol，地址解析协议，用于实现由IP地址到MAC地址的转换<br>arp -a    查询apr缓存表</p><p>硬件商发送数据的是网卡，网卡之上是设备驱动程序，之上是实现了IP协议的程序，之上是实现了TCP协议的程序，再之上才是应用程序。<br>TCP协议使用“TCP端口号”的数字识别上层的应用程序。TCP端口中有一些是预先定义好的，比如Web使用80端口，电子邮件使用25端口（用于发送）</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href=""></a></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;计算机三个根本性基础：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;计算机是执行输入、运算、输出的机器；&lt;/li&gt;
-&lt;li&gt;程序是指令和数据的集合；&lt;/li&gt;
-&lt;li&gt;计算机的处理方式有时与人们的思维习惯不同。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;计算机的硬件由大量集成电路组成。每块集成电路上都带有</summary>
+    <summary type="html">&lt;h2 id=&quot;流程图&quot;&gt;&lt;a href=&quot;#流程图&quot; class=&quot;headerlink&quot; title=&quot;流程图&quot;&gt;&lt;/a&gt;流程图&lt;/h2&gt;&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;u</summary>
       
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="开源库" scheme="http://shjlone.github.io/categories/Android/%E5%BC%80%E6%BA%90%E5%BA%93/"/>
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《深入理解计算机》读书笔记8：异常流控制</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B08-%E5%BC%82%E5%B8%B8%E6%B5%81%E6%8E%A7%E5%88%B6/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B08-%E5%BC%82%E5%B8%B8%E6%B5%81%E6%8E%A7%E5%88%B6/</id>
-    <published>2021-05-29T13:26:29.873Z</published>
-    <updated>2021-05-29T13:26:29.873Z</updated>
+    <title>LeakCanary</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%BC%80%E6%BA%90%E5%BA%93/LeakCanary/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%BC%80%E6%BA%90%E5%BA%93/LeakCanary/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T02:15:06.329Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://square.github.io/leakcanary">https://square.github.io/leakcanary</a></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
+    <summary type="html">&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://square.github.io/leakcanary&quot;&gt;https://square.git</summary>
       
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="开源库" scheme="http://shjlone.github.io/categories/Android/%E5%BC%80%E6%BA%90%E5%BA%93/"/>
     
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《深入理解计算机》读书笔记9：虚拟内存</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B09-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B09-%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</id>
-    <published>2021-05-29T13:26:29.873Z</published>
-    <updated>2021-05-29T13:26:29.874Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
+    <title>Bitmap造成的OOM的处理方式</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/Bitmap%E9%80%A0%E6%88%90%E7%9A%84OOM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/Bitmap%E9%80%A0%E6%88%90%E7%9A%84OOM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T02:15:06.329Z</updated>
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="性能优化" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="OOM专题" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/"/>
     
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《深入理解计算机》读书笔记6：存储器层次结构</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06-%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B06-%E5%AD%98%E5%82%A8%E5%99%A8%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/</id>
-    <published>2021-05-29T13:26:29.872Z</published>
-    <updated>2021-05-29T13:26:29.872Z</updated>
+    <title>内存溢出分析</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%88%86%E6%9E%90/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%88%86%E6%9E%90/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T02:15:06.329Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>OOM(Out of Memory)即内存溢出，是因为应用所需要分配的内存超过系统对应用内存的阈值，而抛出java.lang.OutOfMemoryError错误。</p><p>其根本原因是对象的生命周期不一致，导致内存泄漏。</p><h3 id="内存泄漏和内存溢出的区别"><a href="#内存泄漏和内存溢出的区别" class="headerlink" title="内存泄漏和内存溢出的区别"></a>内存泄漏和内存溢出的区别</h3><ul><li><p>内存溢出</p><p>  是指程序在申请内存时，没有足够的内存空间供其使用，出现out of memory。</p></li><li><p>内存泄漏</p><p>  是指程序在申请内存后，无法释放已申请的内存空间。内存泄漏最终会导致内存溢出。</p></li></ul><h3 id="栈内存溢出和堆内存溢出"><a href="#栈内存溢出和堆内存溢出" class="headerlink" title="栈内存溢出和堆内存溢出"></a>栈内存溢出和堆内存溢出</h3><h4 id="堆內存溢出"><a href="#堆內存溢出" class="headerlink" title="堆內存溢出"></a>堆內存溢出</h4><ul><li>抛出”StackOverflowError”的原因：线程请求的栈深度大于JVM所允许的最大深度。所以根本原因是，某个线程所需的栈内存超过了JVM的限制，<br>而此时物理内存仍有足够的可用空间。出现的情况：方法中无限递归调用。</li><li>抛出”OutOfMemoryError”的原因：无法（向操作系统）申请到足够的内存空间用来拓展栈。根本原因是，（操作系统管理的）物理内存已没有足够的<br>可用内存分配给JVM的栈使用。出现的情况：方法中不停的创建线程。</li></ul><h4 id="栈內存溢出"><a href="#栈內存溢出" class="headerlink" title="栈內存溢出"></a>栈內存溢出</h4><ul><li>new出来的对象所需内存不够了</li></ul><h2 id="可能出现OOM的场景"><a href="#可能出现OOM的场景" class="headerlink" title="可能出现OOM的场景"></a>可能出现OOM的场景</h2><h3 id="静态变量导致的内存泄漏"><a href="#静态变量导致的内存泄漏" class="headerlink" title="静态变量导致的内存泄漏"></a>静态变量导致的内存泄漏</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>比如某个静态变量持有Activity，则当Activity生命周期结束时不会被释放</p><h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>在生命周期结束时释放静态变量</p><h3 id="单例模式导致的内存泄漏"><a href="#单例模式导致的内存泄漏" class="headerlink" title="单例模式导致的内存泄漏"></a>单例模式导致的内存泄漏</h3><h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p>单例持有Activity</p><h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>如果需要持有Context，则使用ApplicationContext</p><h3 id="属性动画导致的内存泄漏"><a href="#属性动画导致的内存泄漏" class="headerlink" title="属性动画导致的内存泄漏"></a>属性动画导致的内存泄漏</h3><h3 id="for循环中不停的创建局部变量"><a href="#for循环中不停的创建局部变量" class="headerlink" title="for循环中不停的创建局部变量"></a>for循环中不停的创建局部变量</h3><h3 id="非静态内部类（包括匿名内部类）默认会持有外部类的引用"><a href="#非静态内部类（包括匿名内部类）默认会持有外部类的引用" class="headerlink" title="非静态内部类（包括匿名内部类）默认会持有外部类的引用"></a>非静态内部类（包括匿名内部类）默认会持有外部类的引用</h3><p>当非静态内部类对象的生命周期，比外部类对象的生命周期长时，可能会导致内存泄漏。常出现于Handler、Thread、AsyncTask</p><p>解决方案：handler用static声明，使用软引用。</p><p><a href="http://cashow.github.io/Android-Anonymous-Inner-Class-Leaks-Memory.html">http://cashow.github.io/Android-Anonymous-Inner-Class-Leaks-Memory.html</a></p><h3 id="未取消注册或回调导致的内存泄漏"><a href="#未取消注册或回调导致的内存泄漏" class="headerlink" title="未取消注册或回调导致的内存泄漏"></a>未取消注册或回调导致的内存泄漏</h3><p>比如在Activity中注册广播，如果Activity销毁后不取消注册，那么这个广播就会一直存在系统中</p><h2 id="一些处理方式"><a href="#一些处理方式" class="headerlink" title="一些处理方式"></a>一些处理方式</h2><h3 id="在onDestroy中手动释放View上的资源，降低因为OOM而导致的内存消耗。"><a href="#在onDestroy中手动释放View上的资源，降低因为OOM而导致的内存消耗。" class="headerlink" title="在onDestroy中手动释放View上的资源，降低因为OOM而导致的内存消耗。"></a>在onDestroy中手动释放View上的资源，降低因为OOM而导致的内存消耗。</h3><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href=""></a></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
+    <summary type="html">&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;OOM(Out of Memory)即内存溢出，是因为应用所需要分配的内存超过系统对应用内存的阈值，而抛出java.lang.OutOfMe</summary>
       
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="性能优化" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="OOM专题" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/"/>
     
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《深入理解计算机》读书笔记7：链接</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B07-%E9%93%BE%E6%8E%A5/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B07-%E9%93%BE%E6%8E%A5/</id>
-    <published>2021-05-29T13:26:29.872Z</published>
-    <updated>2021-05-29T13:26:29.873Z</updated>
+    <title>动画造成的OOM的处理方式</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/%E5%8A%A8%E7%94%BB%E9%80%A0%E6%88%90%E7%9A%84OOM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/%E5%8A%A8%E7%94%BB%E9%80%A0%E6%88%90%E7%9A%84OOM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T02:15:06.329Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
+    <summary type="html">&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;</summary>
       
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="性能优化" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="OOM专题" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/"/>
     
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《深入理解计算机》读书笔记5：优化程序性能</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05-%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B05-%E4%BC%98%E5%8C%96%E7%A8%8B%E5%BA%8F%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84/</id>
-    <published>2021-05-29T13:26:29.871Z</published>
-    <updated>2021-05-29T13:26:29.871Z</updated>
+    <title>非静态内部类造成的OOM的处理方式</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E9%80%A0%E6%88%90%E7%9A%84OOM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/%E9%9D%9E%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB%E9%80%A0%E6%88%90%E7%9A%84OOM%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</id>
+    <published>2021-06-12T02:15:06.329Z</published>
+    <updated>2021-06-12T02:15:06.329Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>我们日常写代码中，很容易写一些以下样子的代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OOMInnerClassActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_oom_inner_class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        EditText editText = findViewById(R.id.oom_edittext);</span><br><span class="line">        TextView textView = findViewById(R.id.oom_textview);</span><br><span class="line">        editText.addTextChangedListener(<span class="keyword">new</span> TextWatcher() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count, <span class="keyword">int</span> after)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">                textView.setText(s.toString());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上面的代码中，TextWatcher的匿名内部类是会持有Activity的引用的。如果它没有跟着Activity的生命周期一起销毁，则会引发内存泄漏。</p><p>为什么匿名内部类会持有外部引用而静态内部类不会呢？静态内部类它是静态的呀，只能访问外部的静态变量，无需持有外部对象的引用。</p><h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><p>其实这种现象跟Handler的处理方式是类似的，监听器持有弱引用，且生命周期结束时同步销毁。可参考以下代码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OOMInnerClassRightActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> TextView textView;</span><br><span class="line">    EditText editText;</span><br><span class="line">    WeakTextWatcher weakTextWatcher;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_oom_inner_class);</span><br><span class="line"></span><br><span class="line">        editText = findViewById(R.id.oom_edittext);</span><br><span class="line">        textView = findViewById(R.id.oom_edittext);</span><br><span class="line"></span><br><span class="line">        weakTextWatcher = <span class="keyword">new</span> WeakTextWatcher(<span class="keyword">this</span>);</span><br><span class="line">        editText.addTextChangedListener(weakTextWatcher);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用静态内部类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">WeakTextWatcher</span> <span class="keyword">implements</span> <span class="title">TextWatcher</span> </span>&#123;</span><br><span class="line">        <span class="comment">//使用弱引用</span></span><br><span class="line">        <span class="keyword">private</span> WeakReference&lt;OOMInnerClassRightActivity&gt; activityWeakReference;</span><br><span class="line"></span><br><span class="line">        WeakTextWatcher(OOMInnerClassRightActivity activity) &#123;</span><br><span class="line">            activityWeakReference = <span class="keyword">new</span> WeakReference&lt;OOMInnerClassRightActivity&gt;(activity);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> count, <span class="keyword">int</span> after)</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence s, <span class="keyword">int</span> start, <span class="keyword">int</span> before, <span class="keyword">int</span> count)</span> </span>&#123;</span><br><span class="line">            OOMInnerClassRightActivity activity = activityWeakReference.get();</span><br><span class="line">            <span class="keyword">if</span>(activity != <span class="keyword">null</span>) &#123;</span><br><span class="line">                activity.textView.setText(s.toString());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable s)</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        <span class="comment">//释放监听</span></span><br><span class="line">        editText.removeTextChangedListener(weakTextWatcher);</span><br><span class="line">        weakTextWatcher = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>也可以参考<a href="/wiki/Android/%E5%9F%BA%E7%A1%80/Handler%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">Handler基本用法</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="http://cashow.github.io/Android-Anonymous-Inner-Class-Leaks-Memory.html">Android - 匿名内部类导致内存泄露的处理办法</a></li><li><a href="https://cloud.tencent.com/developer/article/1179625">匿名内部类导致内存泄露的面试题</a></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
+    <summary type="html">&lt;h2 id=&quot;问题分析&quot;&gt;&lt;a href=&quot;#问题分析&quot; class=&quot;headerlink&quot; title=&quot;问题分析&quot;&gt;&lt;/a&gt;问题分析&lt;/h2&gt;&lt;p&gt;我们日常写代码中，很容易写一些以下样子的代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;ta</summary>
       
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="性能优化" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+    <category term="OOM专题" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/OOM%E4%B8%93%E9%A2%98/"/>
     
     
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《深入理解计算机》读书笔记3：程序的机器级表示</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B03-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B03-%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA/</id>
-    <published>2021-05-29T13:26:29.869Z</published>
-    <updated>2021-05-29T13:26:29.869Z</updated>
+    <title>Handler基本用法</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/Handler%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/Handler%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</id>
+    <published>2021-06-12T02:15:06.322Z</published>
+    <updated>2021-06-12T02:15:06.322Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解计算机》读书笔记3：处理器体系结构</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B04-%E5%A4%84%E7%90%86%E5%99%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B04-%E5%A4%84%E7%90%86%E5%99%A8%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/</id>
-    <published>2021-05-29T13:26:29.869Z</published>
-    <updated>2021-05-29T13:26:29.871Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
+    <content type="html"><![CDATA[<p>Hanlder系列目录：</p><ul><li><a href="./Handler%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95.html">Handler基本用法</a></li><li><a href="./Handler%E5%8E%9F%E7%90%86.html">Handler原理</a></li></ul><h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>A Handler allows you to send and process Message and Runnable objects associated with a thread’s MessageQueue. Each Handler instance<br>is associated with a single thread and that thread’s message queue. When you create a new Handler it is bound to a Looper.<br>It will deliver messages and runnables to that Looper’s message queue and execute them on that Looper’s thread.</p><p>There are two main uses for a Handler: (1) to schedule messages and runnables to be executed at some point in the future;<br>and (2) to enqueue an action to be performed on a different thread than your own.</p><p>Scheduling messages is accomplished with the post(Runnable), postAtTime(java.lang.Runnable, long),<br>postDelayed(Runnable, Object, long), sendEmptyMessage(int), sendMessage(Message), sendMessageAtTime(Message, long), and<br>sendMessageDelayed(Message, long) methods. The post versions allow you to enqueue Runnable objects to be called by the<br>message queue when they are received; the sendMessage versions allow you to enqueue a Message object containing a bundle<br>of data that will be processed by the Handler’s handleMessage(Message) method (requiring that you implement a subclass of Handler).</p><p>When posting or sending to a Handler, you can either allow the item to be processed as soon as the message queue is ready<br>to do so, or specify a delay before it gets processed or absolute time for it to be processed. The latter two allow you<br>to implement timeouts, ticks, and other timing-based behavior.</p><p>When a process is created for your application, its main thread is dedicated to running a message queue that takes care<br>of managing the top-level application objects (activities, broadcast receivers, etc) and any windows they create. You<br>can create your own threads, and communicate back with the main application thread through a Handler. This is done by<br>calling the same post or sendMessage methods as before, but from your new thread. The given Runnable or Message will then<br>be scheduled in the Handler’s message queue and processed when appropriate.</p><p>Handler用于Android中的线程通信。主要的用于在异步线程中发送<code>Message</code>或者直接运行一个<code>Runnable</code>，即可回到主线程执行UI操作。Handler在哪个线程<br>初始化，则它依附在哪个线程。Activity中有一个runOnUiThread方法，封装了Handler可以直接在异步线程中使用。Handler也可以延迟执行。</p><h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.lqd.androidpractice.handler;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.app.Activity;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.os.Handler;</span><br><span class="line"><span class="keyword">import</span> android.os.Message;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> androidx.annotation.NonNull;</span><br><span class="line"><span class="keyword">import</span> androidx.annotation.Nullable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.lqd.androidpractice.R;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jetbrains.annotations.NotNull;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.ref.WeakReference;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * handler 使用实例</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 在异步线程发送消息到主线程刷新UI</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: a564</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span> 2021/6/7</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HandlerActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String TAG = <span class="string">&quot;HandlerActivity&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TextView textView;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MyHandler myHandler;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(<span class="meta">@Nullable</span> Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">        setContentView(R.layout.activity_handler);</span><br><span class="line"></span><br><span class="line">        textView = findViewById(R.id.ah_textview);</span><br><span class="line">        findViewById(R.id.ah_btn1).setOnClickListener(v -&gt; &#123;</span><br><span class="line">            <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">super</span>.run();</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    Log.d(TAG, Thread.currentThread().getStackTrace()[<span class="number">2</span>].getMethodName());</span><br><span class="line"></span><br><span class="line">                    Message msg = Message.obtain();</span><br><span class="line">                    msg.what = <span class="number">1</span>; <span class="comment">// 消息标识</span></span><br><span class="line">                    msg.obj = <span class="string">&quot;A&quot;</span>; <span class="comment">// 消息内存存放</span></span><br><span class="line">                    myHandler.sendMessage(msg); <span class="comment">// 异步线程发送消息</span></span><br><span class="line"></span><br><span class="line">                    <span class="comment">//使用post</span></span><br><span class="line">                    myHandler.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                        <span class="meta">@Override</span></span><br><span class="line">                        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                            <span class="comment">//回到UI线程</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;.start();</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        myHandler = <span class="keyword">new</span> MyHandler(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        myHandler.removeCallbacksAndMessages(<span class="keyword">null</span>);<span class="comment">//跟随Activity销毁</span></span><br><span class="line">        myHandler = <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态内部类</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">        <span class="comment">//弱引用</span></span><br><span class="line">        WeakReference&lt;HandlerActivity&gt; activityWeakReference;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">MyHandler</span><span class="params">(HandlerActivity activity)</span> </span>&#123;</span><br><span class="line">            activityWeakReference = <span class="keyword">new</span> WeakReference&lt;HandlerActivity&gt;(activity);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(<span class="meta">@NonNull</span> <span class="meta">@NotNull</span> Message msg)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line"></span><br><span class="line">            Log.d(TAG, Thread.currentThread().getStackTrace()[<span class="number">2</span>].getMethodName());</span><br><span class="line">            Log.d(TAG, msg.toString());</span><br><span class="line">            HandlerActivity activity = activityWeakReference.get();</span><br><span class="line">            <span class="keyword">if</span> (activity == <span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">switch</span> (msg.what) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    activity.textView.setText(<span class="string">&quot;执行了线程1的UI操作&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                    activity.textView.setText(<span class="string">&quot;执行了线程2的UI操作&quot;</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="HandlerThread"><a href="#HandlerThread" class="headerlink" title="HandlerThread"></a>HandlerThread</h2><p>顾名思义，HandlerThread使得Thread拥有的Handler的特性，可以在此线程中进行消息的分发和处理。使用场景也是创建异步线程并有数据交互。我们也可以<br>将其封装成一个工具类，这样不需要每次都new一个线程出来，方便使用且节省性能。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BackgroundHandlerThread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Holder</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> BackgroundHandlerThread _instance = <span class="keyword">new</span> BackgroundHandlerThread();</span><br><span class="line">        <span class="keyword">static</span>&#123;</span><br><span class="line">            _instance.init();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BackgroundHandlerThread <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Holder._instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> HandlerThread mHandlerThread;</span><br><span class="line">    <span class="keyword">private</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//HandlerThread的第二个参数为线程优先级</span></span><br><span class="line">        mHandlerThread = <span class="keyword">new</span> HandlerThread(BackgroundHandlerThread.class.getSimpleName());</span><br><span class="line">        mHandlerThread.start();</span><br><span class="line"></span><br><span class="line">        mHandler = <span class="keyword">new</span> Handler(mHandlerThread.getLooper())&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Looper <span class="title">getLooper</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mHandlerThread.getLooper();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Handler <span class="title">getHandler</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.mHandler;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 当需要异步执行的地方可以直接使用下面的代码</span></span><br><span class="line">BackgroundHandlerThread.getInstance().getHandler().post(Runnable)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="API介绍"><a href="#API介绍" class="headerlink" title="API介绍"></a>API介绍</h2><p><code>sendMessage(Message message)</code></p><p>发送消息到消息队列</p><p><code>post(Runnable runable)</code></p><p>把一个Runnable对象添加到消息队列中，这个方法会在对应Looper的线程中运行。</p><p><code>dispatchMessage(Message msg)</code></p><p>将消息分发给对应的Handler</p><p><code>handleMessage</code></p><p>根据某个消息类型进行处理</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul><li><a href="https://developer.android.com/reference/android/os/Handler">https://developer.android.com/reference/android/os/Handler</a></li><li><a href="https://droidyue.com/blog/2015/11/08/make-use-of-handlerthread/">详解 Android 中的 HandlerThread</a></li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解计算机》读书笔记2：信息的表示和处理</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86/</id>
-    <published>2021-05-29T13:26:29.868Z</published>
-    <updated>2021-05-29T13:26:29.868Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul><p>原码、反码、补码</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解计算机》读书笔记12：并发编程</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B012-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B012-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</id>
-    <published>2021-05-29T13:26:29.866Z</published>
-    <updated>2021-05-29T13:26:29.867Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解计算机》读书笔记10：系统级I/O</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B010-%E7%B3%BB%E7%BB%9F%E7%BA%A7IO/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B010-%E7%B3%BB%E7%BB%9F%E7%BA%A7IO/</id>
-    <published>2021-05-29T13:26:29.863Z</published>
-    <updated>2021-05-29T13:26:29.863Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解计算机》读书笔记11：网络编程</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B011-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B011-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</id>
-    <published>2021-05-29T13:26:29.863Z</published>
-    <updated>2021-05-29T13:26:29.864Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B02-%E4%BF%A1%E6%81%AF%E7%9A%84%E8%A1%A8%E7%A4%BA%E5%92%8C%E5%A4%84%E7%90%86.html">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a></li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解计算机》读书笔记1：计算机系统漫游</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8/</id>
-    <published>2021-05-29T13:26:29.851Z</published>
-    <updated>2021-05-29T13:26:29.851Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul><li><a href="/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B01-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%BC%AB%E6%B8%B8.html">计算机系统漫游</a></li><li><a href="">信息的表示和处理</a></li><li><a href="">程序的机器级表示</a> </li><li><a href="">处理器体系结构</a></li><li><a href="">优化程序性能</a></li><li><a href="">存储器层次结构</a></li><li><a href="">链接</a></li><li><a href="">异常流控制</a></li><li><a href="">虚拟内存</a></li><li><a href="">系统级I/O</a></li><li><a href="">网络编程</a></li><li><a href="">并发编程</a></li></ul><h2 id="计算机系统漫游"><a href="#计算机系统漫游" class="headerlink" title="计算机系统漫游"></a>计算机系统漫游</h2><p>本章只是对整个计算机体系进行概要的介绍，很多主题扩展开来又可以写一本很厚的书了。在阅读此章时，有个大概了解即可。</p><h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><p>源程序实际上就是一个由值0和1组成的位（又称为比特）序列，8个位被组织成一组，称为<strong>字节</strong>。每个字节表示程序中的某些文本字符。<br>系统中所有的信息–包括磁盘文件、内存中的程序、内存中存放用户数据以及网络上传送的数据，都是由一串比特表示的。区分不同数据对象的唯一方式是我们读到这些数据对象时的上下文。</p><p>下图描述了一个c程序是如何被编译运行的。</p><p><img src="./csapp_1_1.png"></p><h3 id="关于计算机的构成"><a href="#关于计算机的构成" class="headerlink" title="关于计算机的构成"></a>关于计算机的构成</h3><p><img src="./csapp_1_2.png"></p><h3 id="关于存储器"><a href="#关于存储器" class="headerlink" title="关于存储器"></a>关于存储器</h3><p><img src="./csapp_1_3.png"></p><p>分层，高层提供给低层高速缓存，越高层性能越好，价格越贵。</p><h3 id="计算机抽象的表示"><a href="#计算机抽象的表示" class="headerlink" title="计算机抽象的表示"></a>计算机抽象的表示</h3><p><img src="./csapp_1_4.png"></p><h3 id="关于shell"><a href="#关于shell" class="headerlink" title="关于shell"></a>关于shell</h3><p>shell是一个命令行解释器，它输出一个提示符，等待输入一个命令行，然后执行这个命令。如果该命令行的第一个单词不是内置的shell命令，那么shell就会假设这是一个可执行文件的名字，它将加载并运行这个文件。</p><h3 id="操作系统的两个基本功能："><a href="#操作系统的两个基本功能：" class="headerlink" title="操作系统的两个基本功能："></a>操作系统的两个基本功能：</h3><ol><li>防止硬件被失控的应用程序滥用；</li><li>向应用程序提成简单一致的机制来控制复杂而又通常大不相同的低级硬件设备。</li></ol><p>操作系统通过几个基本的抽象概念（进程、虚拟内存和文件）来实现这两个功能。<br>文件是对I/O设备的抽象表示，虚拟内存是对主存和磁盘I/O设备的抽象表示，进程则是对处理器、主存和I/O设备的抽象表示。</p><h3 id="Posix的由来"><a href="#Posix的由来" class="headerlink" title="Posix的由来"></a>Posix的由来</h3><p>20世纪80年代中期，Unix厂商试图通过加入新的、往往不兼容的特性来使他们的程序与众不同，为了阻止这种趋势，IEEE开始标准化Unix的开发，后来由Richard Stallman命名为“Posix”。结果就得到了一些列的标准，称作Posix标准。</p><h3 id="并发运行"><a href="#并发运行" class="headerlink" title="并发运行"></a>并发运行</h3><p>一个进程的指令和另一个进程的指令是交错执行的。</p><p>操作系统保持跟踪进程运行所需的所有状态信息。这种状态，也就是<strong>上下文</strong>。</p><p>进程间切换的交错执行的机制称为<strong>上下文切换</strong>。</p><p><img src="./csapp_1_5.png"></p><h3 id="Amdahl定律"><a href="#Amdahl定律" class="headerlink" title="Amdahl定律"></a>Amdahl定律</h3><p><img src="./csapp_1_6.png"></p><ul><li>a表示可以提升部分的比例</li><li>k表示可提升部分性能提升的比例</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2021/04/13/%E6%B7</summary>
-      
-    
-    
-    
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    
-    <category term="深入理解计算机" scheme="http://shjlone.github.io/tags/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>收集的电子书</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%94%B6%E9%9B%86%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%94%B6%E9%9B%86%E7%9A%84%E7%94%B5%E5%AD%90%E4%B9%A6/</id>
-    <published>2021-05-29T13:26:29.849Z</published>
-    <updated>2021-05-29T13:26:29.850Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>如何阅读一本书</li></ul><p><strong>ActionScript、Flex</strong></p><ul><li>Actionscript 3 image effects</li><li>ActionScript 3</li><li>ActionScript Graphing Cookbook</li><li>ActionScript</li><li>ActionScript大型网页游戏开发</li><li>AdvancED ActionScript Animation动画高级编程</li><li>AdvancED Game Design with Flash</li><li>air_buildingapps</li><li>Flash Cinematic Techniques</li><li>Flash Game Development by Example</li><li>Flex4权威指南</li><li>FLEX企业应用开发实战</li><li>Foundation Game Design with Flash</li><li>FriendsofED</li><li>The Essential Guide to Flash Games(flash游戏编程指南)</li><li>优化Flash性能</li><li>AIR_Android应用开发实战</li><li>Developing Android Applications with Flex 4</li><li>Flash+Flex+Air移动开发入门经典</li><li>mobile-encoding-android-v2_7</li><li>Packt Publishing Flash Development for Android Cookbook (2011)</li><li>使用Flex4</li><li>ABCStructure</li><li>amf0_spec_121207</li><li>amf3_spec_121207</li><li>avm2overview</li><li>swf_file_format_spec_v10</li><li>video_file_format_spec_v10_1</li></ul><br/><p><strong>Android</strong></p><ul><li>Android 4高级编程(第3版)</li><li>Android Developer Tools Essentials</li><li>Android Native Development Kit Cookbook</li><li>Android内核剖析(完整版)</li><li>Android多媒体开发高级编程</li><li>Android应用开发详解</li><li>Android开发精要</li><li>ANDROID框架揭秘</li><li>Android系统源代码情景分析</li><li>Android软件安全与逆向分析</li><li>Dalvik-Bytecode</li><li>embedded_android</li><li>Fragments for All Presentation</li><li>Google Android SDK开发范例大全(第3版)</li><li>Groovy in Action</li><li>Groovy中文教程</li><li>Kotlin in Action</li><li>kotlin-for-android-developers-zh</li><li>Kotlin官方参考文档中文版</li><li>Practical</li><li>practical_android_4_games_development</li><li>Smashing_Android_UI</li><li>The Busy Coder’s Guide to Android Development, Version 4</li><li>[Gradle</li><li>[www</li><li>深入理解Android(卷2)</li><li>深入理解android</li><li>疯狂Android讲义</li><li>精通Android3</li></ul><br/><p><strong>C#</strong></p><ul><li>C#入门经典第5版中文高清版</li><li>C#高级编程(中文第七版)</li></ul><br/><p><strong>C、C++</strong></p><ul><li>Accelerated C++中文版</li><li>Andrew Koenig：C 陷阱与缺陷@2002 (扫描版)</li><li>An_Introduction_to_GCC_中文</li><li>c++  Primer 第5版</li><li>C+++GUI+QT3编程_11774607</li><li>C++STL标准程序库开发指南 PDF电子书下载 带书签目录</li><li>C++标准程序库</li><li>C++模板元编程</li><li>C++沉思录(Ruminations on C++)中文第2版</li><li>C++程序设计原理与实践(中文完整版)</li><li>C++编程规范-101条规则准则与最佳实践</li><li>C++语言的设计和演化</li><li>C专家编程</li><li>C和指针(第二版)高清全版469页</li><li>C程序设计(第四版)谭浩强</li><li>C程序设计语言(第2版_新版)</li><li>C程序设计语言(第2版_新版)习题解答</li><li>C程序设计语言(第2版_新版)非扫描版&amp;详细书签版</li><li>C语言入门经典(第四版)</li><li>C语言范例开发大全</li><li>Effective C   中文版第三版 高清PDF</li><li>Effective STL 中文版</li><li>Essential C++中文版</li><li>Head</li><li>STL源码剖析简体中文完整版(清晰扫描带目录)</li><li>你必须知道的495个C语言问题</li><li>像计算机科学家一样思考C++</li><li>嗨翻C语言_13421426(jb51</li><li>易学C++</li></ul><br/><p><strong>English</strong></p><ul><li>无敌初中必考语法</li><li>新编英语语法教程+学生用书+第5版_PDF</li><li>无敌英语语法：全范围</li></ul><br/><p><strong>History</strong></p><ul><li><p>乔治·奥威尔：一九八四</p></li><li><p>何清涟：现代化的陷阱</p></li><li><p>吴思：潜规则——中国历史中的真实游戏</p></li><li><p>吴思：血酬定律——中国历史中的生存游戏</p></li><li><p>威廉·夏伊勒：第三帝国的兴亡 (上)</p></li><li><p>威廉·夏伊勒：第三帝国的兴亡 (下)</p></li><li><p>威廉·夏伊勒：第三帝国的兴亡 (中)</p></li><li><p>学会提问-批判性思维指南</p></li><li><p>弗洛伊德：梦的解析</p></li><li><p>弗洛伊德：精神分析引论</p></li><li><p>徐中约《中国近代史》（PDF-港版完整无删减）上</p></li><li><p>徐中约《中国近代史》（PDF-港版完整无删减）下</p></li><li><p>斯科特·派克：少有人走的路</p></li><li><p>罗伯特·西奥迪尼：影响力</p></li><li><p>金观涛 &amp; 刘青峰：兴盛与危机——论中国社会超稳定结构</p></li><li><p>阿利安：亚历山大远征记</p></li><li><p>高华：在历史的风陵渡口</p></li><li><p>黄仁宇：中国大历史</p></li><li><p>剑桥中国历史</p><ul><li>中华人民共和国史 (上卷 扫描版)</li><li>明史 (扫描版)</li><li>晚清史 (上卷 扫描版)</li><li>晚清史 (下卷 扫描版)</li><li>民国史 (上卷 扫描版)</li><li>民国史 (下卷 扫描版)</li><li>秦汉史 (扫描版)</li><li>辽西夏金元史 (扫描版)</li><li>隋唐史 (扫描版)</li></ul></li></ul><br/><p><strong>iOS</strong></p><ul><li>AppDistributionGuide</li><li>Effective Objective-C 2</li><li>iOS应用逆向工程 分析与实战</li><li>iOS编程+第4版</li><li>Objective C 编程之道</li><li>Objective C程序设计</li><li>Objective-C编程全解 第3版</li><li>Objective-C高级编程 iOS与OS X多线程和内存管理</li><li>OSX与iOS内核编程</li></ul><br/><p><strong>Java</strong></p><ul><li>advancedservletsjsp</li><li>Effective Enterprise Java(Chinese)</li><li>Head First Servlets and JSP  中文版  第2版</li><li>Head First Servlets and JSP 2nd</li><li>Head First Web设计 (中文版)</li><li>JAVA并发编程实践（中文）</li><li>Java并发编程实践（英文版）</li><li>Java本地接口(JNI)编程指南和规范2</li><li>JAVA案例开发集锦</li><li>Java编程思想_第4版_中文完整版</li><li>Java虚拟机规范中文版</li><li>Java迷题</li><li>JAVA面试题解惑系列</li><li>servlet-2_5-mrel2-spec</li><li>Think In Java 4完美高清中文版</li><li>《Java网络编程(第4版)》</li><li>深入浅出数据分析（美）米尔顿著</li><li>Effective Java（第2版）</li></ul><br/><p><strong>Javascript</strong></p><ul><li>HTML5高级程序设计</li><li>javascript dom 编程艺术</li><li>JavaScript权威指南(第6版)(中文版)</li><li>JavaScript高级程序设计(中文)-第3版</li></ul><br/><p><strong>kinect</strong></p><ul><li>51CTO下载-kinect应用开发实战（全书）</li><li>Kinect人机交互开发实践</li></ul><br/><p><strong>Linux</strong></p><ul><li>bash Cookbook Solutions and Examples for bash Users</li><li>Linux Shell Scripting Cookbook 2nd Edition May 2013</li><li>Linux 与 UNIX Shell 编程指南</li><li>Linux</li><li>linux内核源代码情景分析(上)</li><li>linux内核源代码情景分析(下)</li><li>Linux命令行与Shell脚本编程大全 第2版</li><li>Understanding The Linux Kernel</li><li>UNIX操作系统基础使用手册</li><li>精通UNIXShell脚本编程</li><li>高级Bash脚本编程指南(Advanced Bash-Scripting</li><li>鸟哥的Linux私房菜服务器架设篇(第三版)</li></ul><br/><p><strong>Music</strong></p><ul><li>五线谱入门</li><li>基本乐理</li></ul><br/><p><strong>PHP</strong></p><ul><li>PHP和MySQL</li><li>PHP开发实战1200例</li><li>symfony权威指南</li><li>深入PHP面向对象模式与实践</li><li>白帽子讲 Web 安全</li><li>高性能mysql第三版 </li><li>PHP核心技术与最佳实践</li><li>PHP内核剖析</li><li>深入理解PHP内核</li></ul><br/><p><strong>Python</strong></p><ul><li>Beginning Game Development with Python and Pygame</li><li>Dive into Python</li><li>Effective</li><li>Expert Python Programming(2nd)</li><li>make game with python &amp; pyGame</li><li>Python 3</li><li>Python Cookbook</li><li>Python参考手册(第4版)</li><li>Python基础教程(第2版)</li><li>python标准库中文版PDF(带章节书签)</li><li>Python核心编程第二版-习题答案</li><li>Python源码剖析</li><li>Python灰帽子 黑客与逆向工程师的Python编程之道</li><li>Python灰帽子：黑客与逆向工程师的Python编程之道(英文版)</li><li>The Django Book 2</li><li>The Python Standard Library by Example</li><li>深入学习Python 3</li><li>编写高质量代码 改善Python程序的91个建议</li></ul><br/><p><strong>Qt</strong></p><ul><li>C++  Qt设计模式（第2版）</li><li>QmlBook-In-Chinese</li><li>Qt Creator快速入门</li><li>Qt Quick核心编程 13678855</li><li>Qt5开发及实例</li><li>Qt及Qt Quick开发实战精解</li><li>QT学习之路(全)</li><li>QT高级编程_chs</li><li>the_art_of_building_qt_applications</li><li>《C++设计模式–基于Qt4开源跨平台开发框架》</li></ul><br/><p><strong>PyQt</strong></p><ul><li>pyqt-book</li><li>PyQt5 tutorial</li><li>pyqt5__pythonGui入门教程</li><li>PyQt5入门</li><li>Rapid GUI Programming with Python and Qt</li></ul><p><strong>Temp</strong></p><ul><li>51CTO下载-ffmpeg教程</li><li>CMake Practice</li><li>design-patterns</li><li>FFMPEG教程完美排版</li><li>GarageBand使用指南</li><li>growth全栈增长工程师指南</li><li>InstallationGuide</li><li>kotlin-in-action-in-chinese</li><li>OpenSL_ES_Specification_1</li><li>SDL+GUIDE+中文译本</li><li>SWIGDocumentation</li><li>TCP-IP详解(卷一、二、三)</li><li>Wireshark 数据包分析实战(第2版)最新中文版</li><li>Wireshark 数据包分析实战详解</li><li>《图解TCP IP(第5版)》</li><li>图解设计模式</li><li>程序是怎样跑起来的_PDF电子书下载 带书签目录 高清完整版</li><li>网络是怎样连接的</li><li>计算机是怎样跑起来的</li><li>设计模式</li><li>设计模式之禅(完整高清版)</li><li>Java加密与解密的艺术</li><li>一个证券分析师的醒悟 张化桥的股市真话</li><li>游戏之旅-我的编程感悟</li><li>游戏设计-原理与实践</li><li>荣辱二十年-我的股市人生</li><li>计算机程序的构造和解释</li></ul><br/><p><strong>产品、设计、思想</strong></p><ul><li>A Pattern Language</li><li>Head First 设计模式</li><li>Java与模式</li><li>Java夜未眠</li><li>java设计模式</li><li>人件（原书第3版）</li><li>人月神话</li><li>代码之美</li><li>你的灯亮着吗</li><li>启示录：打造用户喜爱的产品（英文）</li><li>大话设计模式</li><li>学会提问-批判性思维指南</li><li>建筑的永恒之道</li><li>数据结构经典问题和算法分析</li><li>浪潮之巅</li><li>漫谈设计模式</li><li>编码的奥秘</li><li>设计心理学</li><li>设计模式-可复用面向对象软件的基础</li><li>设计模式精解</li><li>设计模式：Java语言中的应用</li><li>高效程序的奥秘</li><li>黑客与画家 硅谷创业之父Paul Graham文集</li></ul><br/><p><strong>产品经理</strong></p><ul><li>互联网产品经理改变世界</li><li>产品经理手册  第3版</li><li>产品经理方法论</li><li>区块链将如何改变世界</li><li>用户体验要素</li><li>用户体验面面观-方法、工具与实践</li></ul><br/><p><strong>德州扑克</strong></p><ul><li>let there be range(中文)</li><li>加注的优势：当今锦标赛激进策略</li><li>哈灵顿在现金上2中文版</li><li>扑克蓝图</li></ul><br/><p><strong>摄影</strong></p><ul><li>数码单反摄影从入门到精通第一卷</li><li>美国纽约摄影学院摄影教材</li></ul><br/><p><strong>服务端</strong></p><ul><li>docker_practice</li><li>Docker从入门到实践</li><li>PHP-Debug-Manual-public</li><li>Redis开发运维实践指南</li><li>Redis源代码分析</li><li>云计算架构技术与实践</li><li>亿级流量网站架构核心技术</li><li>伊甸园之河</li><li>大型网站技术架构核心原理与案例分析</li><li>实用负载均衡技术网站性能优化攻略</li><li>极客与团队</li><li>深入分布式缓存从原理到实践</li><li>精通正则表达式</li><li>软件架构设计</li><li>高扩展性网站的50条原则</li></ul><br/><p><strong>算法、数据结构</strong></p><ul><li>《大话数据结构》 程杰</li><li>程序员实用算法</li><li>算法之道</li><li>算法导论(第二版)习题答案(英文版)</li><li>算法导论</li></ul><br/><p><strong>管理</strong></p><ul><li>MBA教不了的创富课</li></ul><br/><p><strong>股票</strong></p><ul><li>与庄共舞（股票实战操作）</li><li>从零开始学炒股</li><li>价值投资系列之25《上市公司财报解读》</li><li>你不知道的中国股事那些事(高清)</li><li>投资正途</li><li>日本蜡烛图技术</li><li>江恩投资几何学原理</li><li>江恩测市法则（经典之作）</li><li>海龟交易法则</li><li>看盘细节(精选)</li><li>看盘细节</li><li>短线炒股就这几招（操盘必读）</li><li>短线点金：揭开市场的底牌</li><li>短线点金：破解股价的运行轨迹</li><li>短线点金：道破股价涨跌之玄机</li><li>缠中说禅《教你炒股票》1-108课图文全版</li><li>缠论解析  缠中说禅技术理论图解(清晰版)</li><li>聪明的投资者（高质量）</li><li>胡立阳股票投资100招（清晰）</li><li>证券市场基础知识</li><li>【投资艺术】作者：查尔斯 艾里斯</li><li>巴菲特教你读财报</li><li>股票作手回忆录</li><li>超越金融  索罗斯的哲学   (美)乔治·索罗斯   2</li><li>金融炼金术(高质量）</li><li>高胜算操盘</li><li>股市操练大全12345</li></ul><br/><p><strong>计算机基础</strong></p><ul><li>深入理解计算机系统(原书第2版)</li><li>编译、链接、装载</li><li>程序员的自我修养—链接、装载与库</li><li>linker and loader</li><li>现代编译原理：Ｃ语言描述</li><li>编译原理及实践</li><li>编译原理基础</li><li>编译原理（龙书）中文版</li><li>编译原理及实践</li></ul><br/><p><strong>音视频相关</strong></p><ul><li>FFmpeg Tutorial</li><li>FFmpegBasics</li><li>ffmpeg基础库编程开发</li><li>OpenCV 2 计算机视觉编程手册_中文版</li><li>学习OpenCV</li></ul><br/><p><strong>项目管理</strong></p><ul><li>Project 2016项目管理自学经典_王菁_清华大学_2016</li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;如何阅读一本书&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;ActionScript、Flex&lt;/strong&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;Hanlder系列目录：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Actionscript 3 image effects&lt;/li&gt;
-&lt;li&gt;ActionScript 3&lt;/li&gt;
-&lt;li</summary>
+&lt;li&gt;&lt;a href=&quot;./Handler%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95.html&quot;&gt;Handler基本用法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;./Handler%E5%8E%</summary>
       
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="基础" scheme="http://shjlone.github.io/categories/Android/%E5%9F%BA%E7%A1%80/"/>
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《网络是如何连接的》读书笔记</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8A%E7%BD%91%E7%BB%9C%E6%98%AF%E5%A6%82%E4%BD%95%E8%BF%9E%E6%8E%A5%E7%9A%84%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
-    <published>2021-05-29T13:26:29.842Z</published>
-    <updated>2021-05-29T13:26:29.843Z</updated>
+    <title>ConstraintLayout</title>
+    <link href="http://shjlone.github.io/wiki/Android/UI/ConstraintLayout/"/>
+    <id>http://shjlone.github.io/wiki/Android/UI/ConstraintLayout/</id>
+    <published>2021-06-12T02:15:06.306Z</published>
+    <updated>2021-06-12T02:15:06.306Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="layout-constraintLeft-toRightOf的理解"><a href="#layout-constraintLeft-toRightOf的理解" class="headerlink" title="layout_constraintLeft_toRightOf的理解"></a>layout_constraintLeft_toRightOf的理解</h3><p>constraintXXX表示约束View自己，XXX分别表示上下左右等位置，toXXXOf表示约束依赖等对象，可以是同级的View，也可以是parent。</p><h3 id="layout-constraintBaseline-toBaselineOf"><a href="#layout-constraintBaseline-toBaselineOf" class="headerlink" title="layout_constraintBaseline_toBaselineOf"></a>layout_constraintBaseline_toBaselineOf</h3><p>对于TextView，可以使用基线对齐，这样文字就能对齐了。</p><h3 id="边距"><a href="#边距" class="headerlink" title="边距"></a>边距</h3><p><strong>不同方位的边距</strong></p><ul><li>android:layout_marginStart</li><li>android:layout_marginEnd</li><li>android:layout_marginLeft</li><li>android:layout_marginTop</li><li>android:layout_marginRight</li><li>android:layout_marginBottom</li></ul><p><strong>目标View隐藏时，以下属性生效</strong></p><ul><li>layout_goneMarginStart</li><li>layout_goneMarginEnd</li><li>layout_goneMarginLeft</li><li>layout_goneMarginTop</li><li>layout_goneMarginRight</li><li>layout_goneMarginBottom</li></ul><p>水平居中 layout_constraintLeft_toLeftOf &amp; layout_constraintRight_toRightOf<br>垂直居中 layout_constraintTop_toTopOf &amp; layout_constraintBottom_toBottomOf</p><p>layout_constraintHorizontal_bias 水平偏移<br>layout_constraintVertical_bias 垂直偏移</p><p>两个属性的取值范围在0-1。在水平偏移中，0表示最左，1表示最右；在垂直偏移，0表示最上，1表示最下；0.5表示中间。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;layout-constraintLeft-toRightOf的理解&quot;&gt;&lt;a href=&quot;#layout-constraintLeft-toRightOf的理解&quot; class=&quot;headerlink&quot; title=&quot;layout_constraintLeft_to</summary>
+      
     
     
     
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="UI" scheme="http://shjlone.github.io/categories/Android/UI/"/>
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《Kotlin实战》读书笔记</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AKotlin%E5%AE%9E%E6%88%98%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AKotlin%E5%AE%9E%E6%88%98%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
-    <published>2021-05-29T13:26:29.841Z</published>
-    <updated>2021-05-29T13:26:29.842Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h5><ul><li>不需要分号</li></ul><h5 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h5><ul><li>fun声明函数</li><li>函数可以定义在文件的最外层</li></ul><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">max</span><span class="params">(a: <span class="type">Int</span>, b: <span class="type">Int</span>)</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">if</span>(a&gt;b) a <span class="keyword">else</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>表达式函数体</strong></p><pre><code>fun max(a: Int, b: Int): Int = if(a&gt;b) a else b</code></pre><p>表达式函数体可以省略返回类型，Kotlin会进行类型推导</p><pre><code>fun max(a: Int, b: Int)= if(a&gt;b) a else b</code></pre><p>数组就是类</p><h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><ul><li>var表示可写属性</li><li>val表示只读属性</li></ul><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> answer = <span class="number">42</span> <span class="comment">//这个变量永不为null</span></span><br><span class="line"><span class="keyword">var</span> answer1:<span class="built_in">Int</span>? = <span class="number">40</span> <span class="comment">// 这个变量可以为null</span></span><br><span class="line"><span class="keyword">val</span> answer:<span class="built_in">Int</span> = <span class="number">42</span></span><br><span class="line"><span class="keyword">val</span>表示不可变引用，使用<span class="keyword">val</span>声明的变量不能在初始化之后再次赋值。</span><br><span class="line"><span class="keyword">var</span>可变引用，可以改变值，但不能改变类型。</span><br><span class="line"><span class="keyword">var</span> answer = <span class="number">13</span></span><br><span class="line">answer = <span class="string">&quot;no &quot;</span> 这样是错误的</span><br></pre></td></tr></table></figure><p><strong>字符串模板</strong></p><pre><code>$name$&#123;name&#125;</code></pre><p><strong>类</strong></p><pre><code>class Person(val name:String)class Person(val name:String, var isMarried:Boolean)</code></pre><p><strong>自定义访问器</strong></p><pre><code>class Rectangle(val height:Int, val width:Int) &#123;    val isSquare:Boolean        get() &#123;            return height == width        &#125;    //或者    get() = height == width&#125;</code></pre><p>包层级结构不需要遵守目录层级结构</p><p><strong>枚举</strong></p><pre><code>enum class Color(val r:Int, val g:Int, val b:Int) &#123;RED(255,0,0),GREEN(0,255,0);fun rgb() = (r*256 + g)*256 + b&#125;println(Color.GREEN.rgb())fun getMnumonic(color: Color) =     when(color) &#123;        Color.RED -&gt; &quot;Richard&quot;        Color.GREEN -&gt; &quot;Gave&quot;    &#125;</code></pre><p>@JvmOverloads， 会生成Java重载函数</p><p>顶层属性和函数</p><p>扩展函数不能被重写</p><h4 id="扩展属性"><a href="#扩展属性" class="headerlink" title="扩展属性"></a>扩展属性</h4><p>vararg 修饰符  可变参数</p><h4 id="中缀调用"><a href="#中缀调用" class="headerlink" title="中缀调用"></a>中缀调用</h4><p>局部函数</p><p>kotlin类声明默认是final和public，要想声明不是final的，将其标记为open</p><p>open、final、abstract</p><p>lateinit</p><p><strong>object</strong></p><p>定义一个类并同事创建一个实例，使用场景：</p><ul><li>对象声明是定义单例的一种方式</li><li>伴生对象可以持有工厂方法和其他与整个类相关，但在调用时并不依赖类实例的方法。</li><li>对象表达式用来替代Java的匿名内部类</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">object DataProviderManager &#123;</span><br><span class="line">    <span class="function">fun <span class="title">registarDataProvider</span><span class="params">(provider: DataProvider)</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DataProviderManager.registarDataProvider(...)</span><br></pre></td></tr></table></figure><p><strong>伴生对象companion</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClaa</span> </span>&#123;</span><br><span class="line">    companion object Factory&#123;</span><br><span class="line">        <span class="function">fun <span class="title">create</span><span class="params">()</span>:MyClass </span>= MyClass()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//该伴生对象的成员可通过只使用类名作为限定符来调用</span></span><br><span class="line">val instance = MyClass.create()</span><br><span class="line"></span><br><span class="line"><span class="comment">//可以省略伴生对象的名称，在这种情况下将使用名称 Companion</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    companion object &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">val x = MyClass.Companion</span><br></pre></td></tr></table></figure><p>在 JVM 平台，如果使用 @JvmStatic 注解，你可以将伴生对象的成员生成为真正的静态方法和字段</p><p>直接通过容器类名来访问整个对象的方法和属性的能力</p><p>匿名对象可以实现多个接口或者不实现接口</p><p>lamdba表达式始终用花括号包围</p><pre><code>val sum = &#123;x: Int, y: Int -&gt; x+y&#125;println(sum(1,2))</code></pre><p>允许lamdba内部访问非final变量甚至修改它们</p><p>成员引用</p><pre><code>val getAge = Person::age</code></pre><p>all any  count  find  对集合应用判断式</p><p>with函数<br>apply</p><p>类型系统</p><p>可空性</p><pre><code>fun strLen(s:String) = s.lengthfun strLen(s:String?) = s.length</code></pre><p>安全调用运算符 ?.，只要链式中一个值为null，则整个表达式都返回null</p><pre><code>s?.toUpperCase()val testStr : String? = nullval result = testStr?.length?.plus(5)?.minus(10)println(result)</code></pre><p>?:</p><p>当一个函数有返回值时，如果方法中的代码使用?.去返回一个值，那么方法的返回值的类型后面也要加上?符号</p><pre><code>fun funNullMethod() : Int? &#123;    val str : String? = &quot;123456&quot;    return str?.length&#125;</code></pre><p>as?</p><p>非空断言  “!!”    显示地抛出异常</p><h5 id="let函数"><a href="#let函数" class="headerlink" title="let函数"></a>let函数</h5><p>作用：使用符号?.验证的时候忽略掉null</p><p>用法：变量?.let{…}</p><pre><code>val arrTest : Array&lt;Int?&gt; = arrayOf(1,2,null,3,null,5,6,null)// 传统写法for (index in arrTest) &#123;    if (index == null)&#123;        continue    &#125;    println(&quot;index =&gt; $index&quot;)&#125;// let写法for (index in arrTest) &#123;    index?.let &#123; println(&quot;index =&gt; $it&quot;) &#125;&#125;</code></pre><h5 id="Evils操作符"><a href="#Evils操作符" class="headerlink" title="Evils操作符"></a>Evils操作符</h5><p><strong>?:</strong></p><p>判断一个可空类型时，会返回一个我们自己设定好的默认值</p><pre><code>val testStr : String? = nullvar length = 0// ?: 写法length = testStr?.length ?: -1println(length)</code></pre><p><strong>!!</strong></p><p>判断一个可空类型时，会显示的抛出空引用异常</p><pre><code>val testStr : String? = nullprintln(testStr!!.length)</code></pre><p><strong>as?</strong></p><p>安全的类型转换</p><pre><code>val num2 : Int? = &quot;Koltin&quot; as? Intprintln(&quot;nun2 = $num2)</code></pre><p>基本类型、包装类型的转换需要通过API</p><p>Any  kotlin基类<br>Unit  kotlin中的void<br>Nothing    这个函数永不返回</p><p>List    listOf    mutableListOf、arrayListOf<br>Set    setOf    mutableSetOf、hashSetOf、linkedSetOf、sortedSetOf<br>Map    mapOf    mutableMapOf、hashMapOf、linkedMapOf、sortedMapOf</p><p>重载二元算术运算<br>operator</p><p>委托属性  by lazy()</p><p>kotlin允许使用对应名称的函数来重载一些标准的数学运算，但不能定义自己的运算符。</p><p>函数类型</p><p>内联函数</p><p>注解<br>@JvmName<br>@JvmStatic<br>@JvmOverloads<br>@JvmField</p><p>注解类：用来定义关联到声明和表达式的元数据的结构，它们不能包含任何代码</p><p>元注解<br>@Retention    说明你声明的注解是否会存储到.class文件，以及在运行时是否可以通过反射来访问它。</p><p>kotlin反射API</p><p>invoke</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h5 id=&quot;基本规则&quot;&gt;&lt;a href=&quot;#基本规则&quot; class=&quot;headerlink&quot; title=&quot;基本规则&quot;&gt;&lt;/a&gt;基本规则&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;不需要分号&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;header</summary>
-      
+    <title>Apk打包流程</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/APK%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/APK%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/</id>
+    <published>2021-06-06T14:19:14.722Z</published>
+    <updated>2021-06-06T14:19:48.576Z</updated>
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="性能优化" scheme="http://shjlone.github.io/categories/Android/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>《Java编程思想》读书笔记</title>
-    <link href="http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AJava%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>http://shjlone.github.io/wiki/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E3%80%8AJava%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
-    <published>2021-05-29T13:26:29.840Z</published>
-    <updated>2021-05-29T13:26:29.841Z</updated>
-    
-    <content type="html"><![CDATA[<p>final</p><p>finally</p><p>finalize</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;final&lt;/p&gt;
-&lt;p&gt;finally&lt;/p&gt;
-&lt;p&gt;finalize&lt;/p&gt;
-</summary>
-      
+    <title>XML解析过程和原理</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/XML%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E5%92%8C%E5%8E%9F%E7%90%86/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/XML%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E5%92%8C%E5%8E%9F%E7%90%86/</id>
+    <published>2021-06-06T14:17:04.341Z</published>
+    <updated>2021-06-12T02:15:06.329Z</updated>
     
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="基础" scheme="http://shjlone.github.io/categories/Android/%E5%9F%BA%E7%A1%80/"/>
     
     
-    <category term="读书笔记" scheme="http://shjlone.github.io/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>View的基本概念</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/View%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/View%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</id>
+    <published>2021-06-06T14:13:43.327Z</published>
+    <updated>2021-06-06T14:14:00.393Z</updated>
+    
+    
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="基础" scheme="http://shjlone.github.io/categories/Android/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ContentProvider工作过程</title>
+    <link href="http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/ContentProvider%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B/"/>
+    <id>http://shjlone.github.io/wiki/Android/%E5%9F%BA%E7%A1%80/ContentProvider%E5%B7%A5%E4%BD%9C%E8%BF%87%E7%A8%8B/</id>
+    <published>2021-06-05T06:06:06.780Z</published>
+    <updated>2021-06-12T02:15:06.322Z</updated>
+    
+    
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/categories/Android/"/>
+    
+    <category term="基础" scheme="http://shjlone.github.io/categories/Android/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="Android" scheme="http://shjlone.github.io/tags/Android/"/>
     
   </entry>
   
